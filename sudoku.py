@@ -2,6 +2,7 @@ import random
 import time
 import math
 import sys
+import copy
 
  
 
@@ -61,8 +62,8 @@ def simulated_annealing_solver(initial_board):
     current_score = objective_score(current_solution)
     best_score = current_score
 
-    temperature = 1.0
-    cooling_rate = 0.999999  #TODO: Adjust this parameter to control the cooling rate
+    temperature = 0.5
+    cooling_rate = 0.99999  #TODO: Adjust this parameter to control the cooling rate
     imposed = []
     count = 0
     while 400000 > count:
@@ -76,7 +77,7 @@ def simulated_annealing_solver(initial_board):
 
             # TODO: Generate a neighbor (Don't forget to skip non-zeros tiles in the initial board ! It will be verified on Inginious.)
             # Choisissez une case aléatoire non fixée et modifiez sa valeur
-            neighbor = current_solution
+            neighbor = copy.deepcopy(current_solution)
             while True:
                 i = random.randint(0, 8)
                 j = random.randint(0, 8)
