@@ -16,6 +16,7 @@ def objective_score(board):
         for j in board[i]:
             if j == 0:
                 conflicts += 1
+    
     for i in range(size):
         row_numbers = []
         col_numbers = []
@@ -61,9 +62,15 @@ def simulated_annealing_solver(initial_board):
     best_score = current_score
 
     temperature = 1.0
-    cooling_rate = 0.9999999  #TODO: Adjust this parameter to control the cooling rate
-
-    while temperature > 0.0001:
+    cooling_rate = 0.999999  #TODO: Adjust this parameter to control the cooling rate
+    imposed = []
+    count = 0
+    while 400000 > count:
+        count += 1
+        if (count % 1000 == 0):
+            print("______________________________")
+            print_board(current_solution)
+            print("______________________________")
 
         try:  
 
